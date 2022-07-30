@@ -14,15 +14,17 @@ axios(url).then(response => {
     const $ = cheerio.load(html)
     const dataArray = []
 
-    $('.teaser__teaserinfo' ,html).each(function(){
+    $('.teaser__link' ,html).each(function(){
         const title = $(this).find('.teaser__headline').text()
         const topic = $(this).find('.teaser__topline').text()
         const short = $(this).find('p').html()
+        const image = $(this).find('img').attr('src')
 
         dataArray.push({
             topic,
             title,
-            short
+            short,
+            image
         })
     })
 
